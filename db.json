@@ -1,0 +1,25 @@
+{
+  "productos":[
+    {
+      "nombreProducto":"Café",
+      "precio":1000,
+      "categoria":"bebida caliente",
+      "imagen":"https://images.pexels.com/photos/17864141/pexels-photo-17864141/free-photo-of-taza-capuchino-planta-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "id":1
+    },
+    {
+      "nombreProducto":"Brownie",
+      "precio":5000,
+      "categoria":"dulce",
+      "imagen":"https://images.pexels.com/photos/17864141/pexels-photo-17864141/free-photo-of-taza-capuchino-planta-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "id":2
+    },
+    {
+      "nombreProducto":"Té",
+      "precio":500,
+      "categoria":"bebida caliente",
+      "imagen":"https://images.pexels.com/photos/17864141/pexels-photo-17864141/free-photo-of-taza-capuchino-planta-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "id":3
+    }
+  ]
+}
