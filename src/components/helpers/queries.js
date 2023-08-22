@@ -1,4 +1,9 @@
 const URL = process.env.REACT_APP_API_CAFECITO;
+//Peticiones
+//GET(devuelve información del API)
+//POST (crear un nuevo producto/usuario etc.)
+//PUT (sirve para modificar un producto/usuario etc.)
+//DELETE (sirve para borrar un producto/usuario etc.)
 
 export const consultarAPI = async()=>{
   //peticion para obtener todos los productos
