@@ -14,12 +14,11 @@ const ItemProducto = () => {
           <Link
             to="/administrar/editar/:id"
             variant="warning"
-            className="btn btn-warning me-1"
+            className="btn btn-warning me-1 mb-1"
           >
             Editar
           </Link>
-
-          <Button variant="danger">Borrar</Button>
+          <Button variant="btn btn-danger mb-1">Borrar</Button>
         </td>
       </tr>
     </>
