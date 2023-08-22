@@ -1,15 +1,15 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ItemProducto = () => {
+const ItemProducto = ({producto}) => {
   return (
     <>
       <tr>
-        <td>1</td>
-        <td>Brownie </td>
-        <td>$300</td>
-        <td>https://cdn4.buysellads.net/uu/1/138663/1691181987-Carbon_A.png</td>
-        <td>Dulce</td>
+        <td>{producto.id}</td>
+        <td>{producto.nombreProducto}</td>
+        <td>${producto.precio}</td>
+        <td>{producto.imagen}</td>
+        <td>{producto.categoria}</td>
         <td>
           <Link
             to="/administrar/editar/:id"

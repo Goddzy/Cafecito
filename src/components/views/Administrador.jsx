@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemProducto from "./producto/ItemProducto";
+import { useEffect } from "react";
+import { consultarAPI } from "../helpers/queries";
 
 const Administrador = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    return () => {
+      consultarAPI().then((respuesta)=>{
+        setProductos(respuesta);
+        
+      })
+    };
+  }, []);
+
   return (
     <Container className="mainSection">
       <article className="d-flex justify-content-between align-items-center">
@@ -25,7 +38,7 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          <ItemProducto></ItemProducto>
+          {productos.map((producto)=><ItemProducto producto={producto} key={producto.id}></ItemProducto>)}
         </tbody>
       </Table>
     </Container>
