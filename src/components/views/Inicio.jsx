@@ -4,7 +4,7 @@ import CardProducto from './producto/CardProducto'
 const Inicio = () => {
   return (
     <Container className="mainSection">
-      <h1>Página principal</h1>
+      <h1 className="mt-5">Página principal</h1>
       <hr/>
       <Row>
         <CardProducto></CardProducto>

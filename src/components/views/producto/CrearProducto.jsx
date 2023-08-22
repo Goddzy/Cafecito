@@ -9,7 +9,8 @@ const CrearProducto = () => {
   const {register,handleSubmit,formState: { errors }} = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    //enviar la petición a la API
+    
   };
 
   return (
