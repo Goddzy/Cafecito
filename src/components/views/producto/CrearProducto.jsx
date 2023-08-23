@@ -4,12 +4,26 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useForm } from "react-hook-form";
+import { crearProductoAPI } from "../../helpers/queries";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CrearProducto = () => {
-  const {register,handleSubmit,formState: { errors }} = useForm();
+  const {register,handleSubmit,formState: { errors }, reset} = useForm();
+  //inicializar useNavigate
+  const navegacion = useNavigate();
 
   const onSubmit = (data) => {
     //enviar la petición a la API
+    crearProductoAPI(data).then((respuesta)=>{
+      if(respuesta.status === 201){
+        //resetear los valores del formulario
+        reset();
+        Swal.fire('Producto creado', 'El producto fue correctamente cargado', "success")   
+        //redireccionar al usuario a la página de administración
+        navegacion('/administrar')}
+      else{Swal.fire('Ocurrió un error','Intente este proceso más tarde' , 'error')} 
+    })
     
   };
 
