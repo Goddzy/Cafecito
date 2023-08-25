@@ -4,16 +4,29 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useForm } from "react-hook-form";
+import { crearUsuariosAPI } from "../../helpers/queries";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CrearCuenta = () => {
+  const navegacion = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const onSubmit = (data) => {
-    //enviar la petición al API
+    crearUsuariosAPI(data).then((respuesta)=>{
+      console.log(respuesta);
+       if(respuesta.status === 201){
+         reset();
+         Swal.fire('Su cuenta ha sido creada', 'Ya puede iniciar sesión', 'success')
+         navegacion('/')
+       }else{Swal.fire('Ocurrió un error','Intente este proceso más tarde' , 'error')}
+
+    })
   };
 
   return (
@@ -67,7 +80,7 @@ const CrearCuenta = () => {
         <Form.Group>
           <Form.Control
             required
-            type="text"
+            type="password"
             className="text-center mt-5"
             placeholder="Contraseña"
             {...register('contraseniaCrearUsuario', {

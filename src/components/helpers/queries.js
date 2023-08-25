@@ -1,9 +1,10 @@
 const URL = process.env.REACT_APP_API_CAFECITO;
+const USUARIOS = process.env.REACT_APP_API_USUARIOS;
 //Peticiones
 //GET(devuelve información del API)
 //POST (crear un nuevo producto/usuario etc.) En los Login también puedo usar un POST.
-//PUT (sirve para modificar un producto/usuario etc.)
 //DELETE (sirve para borrar un producto/usuario etc.)
+//PUT (sirve para modificar un producto/usuario etc.)
 
 //petición GET
 export const consultarAPI = async () => {
@@ -38,6 +39,34 @@ export const borrarProductoAPI = async (id) => {
   try {
     const respuesta = await fetch(URL + "/" + id, {
       method: "DELETE",
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const obtenerProductoAPI = async (id) => {
+  try {
+    const respuesta = await fetch(URL + "/" + id);
+    const producto = {
+      dato: await respuesta.json(),
+      status: respuesta.status,
+    };
+    return producto;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const crearUsuariosAPI = async (usuario) => {
+  try {
+    const respuesta = await fetch(USUARIOS, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(usuario)
     });
     return respuesta;
   } catch (error) {

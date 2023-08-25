@@ -1,16 +1,23 @@
 import { Col, Button, Card } from "react-bootstrap";
-const CardProducto = () => {
+import { Link } from "react-router-dom";
+const CardProducto = ({producto}) => {
   return (
     <Col md="3">
       <Card className="my-3">
-        <img src="https://clarin.com/img//2022/05/24/KEaLLgGNb_1200x630__1.jpg" alt="producto"/>
+        <img src={producto.imagen} alt="producto"/>
         <Card.Body>
-          <Card.Title>Titulo del producto</Card.Title>
+          <Card.Title>{producto.nombreProducto}</Card.Title>
           <Card.Text>
-            Descripción breve del producto
-            <span className="badge badge-rounded-pill bg-primary">$Precio</span>
+            {producto.descripcion}
+            <span className="badge badge-rounded-pill bg-primary">${producto.precio}</span>
           </Card.Text>
-          <Button variant="warning">Ver más</Button>
+          <Link
+            to={`/administrar/detalle/${producto.id}`}
+            variant="warning"
+            className="btn btn-warning me-1 mb-1"
+          >
+            Ver más
+          </Link>
         </Card.Body>
       </Card>
     </Col>

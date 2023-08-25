@@ -1,32 +1,46 @@
 {
   "productos": [
     {
-      "nombreProducto": "Té",
-      "precio": 500,
-      "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/17864141/pexels-photo-17864141/free-photo-of-taza-capuchino-planta-fotografia-de-comida.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "id": 5
-    },
-    {
       "nombreProducto": "Medialuna",
-      "precio": "200",
+      "precio": "500",
       "imagen": "https://assets.elgourmet.com/wp-content/uploads/2011/09/shutterstock_1366373012-1024x683.jpg.webp",
-      "categoria": "salado",
-      "id": 6
+      "categoria": "dulce",
+      "id": 1
     },
     {
       "nombreProducto": "Torta de hojaldre",
+      "precio": "2000",
+      "imagen": "https://www.bakeandshare.com/wp-content/uploads/2020/05/torta-rogel-dulce-de-leche-7.jpg",
+      "categoria": "dulce",
+      "id": 3
+    },
+    {
+      "nombreProducto": "Medialuna",
       "precio": "1000",
       "imagen": "https://assets.elgourmet.com/wp-content/uploads/2011/09/shutterstock_1366373012-1024x683.jpg.webp",
       "categoria": "dulce",
-      "id": 7
+      "id": 4
     },
     {
-      "nombreProducto": "Fulbito",
-      "precio": "150",
-      "imagen": "https://assets.elgourmet.com/wp-content/uploads/2011/09/shutterstock_1366373012-1024x683.jpg.webp",
-      "categoria": "dulce",
-      "id": 8
+      "nombreProducto": "Licuado de frutilla",
+      "precio": "1500",
+      "imagen": "https://s3.amazonaws.com/nv-almadechef/recetas/a/licuado-cariben-771-o-de-frutilla_900x600.jpg",
+      "categoria": "bebida fria",
+      "id": 5
+    }
+  ],
+  "usuarios": [
+    {
+      "nombre": "Renato Trevisiol Montiel",
+      "email": "renatotrevisiolmontiel@gmail.com",
+      "clave": "elfedecomecaca",
+      "id": 1
+    },
+    {
+      "nombreCrearUsuario": "Genaro Trevisiol Montiel",
+      "emailCrearUsuario": "genarotrevisiol@gmail.com",
+      "contraseniaCrearUsuario": "mirinda321",
+      "id": 2
     }
   ]
 }

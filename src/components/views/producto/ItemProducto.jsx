@@ -49,7 +49,7 @@ const ItemProducto = ({ producto, setProductos }) => {
         <td>{producto.categoria}</td>
         <td>
           <Link
-            to="/administrar/editar/:id"
+            to={`/administrar/editar/${producto.id}`}
             variant="warning"
             className="btn btn-warning me-1 mb-1"
           >
