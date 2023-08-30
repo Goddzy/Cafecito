@@ -29,18 +29,5 @@
       "id": 5
     }
   ],
-  "usuarios": [
-    {
-      "nombre": "Renato Trevisiol Montiel",
-      "email": "renatotrevisiolmontiel@gmail.com",
-      "clave": "elfedecomecaca",
-      "id": 1
-    },
-    {
-      "nombreCrearUsuario": "Genaro Trevisiol Montiel",
-      "emailCrearUsuario": "genarotrevisiol@gmail.com",
-      "contraseniaCrearUsuario": "mirinda321",
-      "id": 2
-    }
-  ]
+  "usuarios": []
 }
