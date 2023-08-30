@@ -17,7 +17,7 @@ const DetalleProducto = () => {
 
   return (
     <Container className="mainSection">
-      <Card className="Container border rounded my-5 flex-row">
+      <Card className="Container border rounded my-5">
         <Row>
           <Col md={6}>
             <Card.Img
@@ -30,12 +30,9 @@ const DetalleProducto = () => {
           </Col>
           <Col md={6}>
             <Card.Body>
-              <Card.Title><h2>{datos.nombreProducto}</h2></Card.Title>
-              <Card.Text>
-                <span className="ml-3 badge badge-rounded-pill bg-primary">
+              <Card.Title><h1>{datos.nombreProducto} <span className="ml-3 badge badge-rounded-pill bg-secondary">
                   ${datos.precio}
-                </span>
-              </Card.Text>
+                </span></h1></Card.Title>
             </Card.Body>
           </Col>
         </Row>

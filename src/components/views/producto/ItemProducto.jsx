@@ -14,7 +14,7 @@ const ItemProducto = ({ producto, setProductos }) => {
       confirmButtonText: "Borrar",
     }).then((result) => {
       if (result.isConfirmed) {
-        borrarProductoAPI(producto.id).then((respuesta) => {
+        borrarProductoAPI(producto._id).then((respuesta) => {
           if (respuesta.status === 200) {
             Swal.fire(
               "Producto borrado",
@@ -42,14 +42,14 @@ const ItemProducto = ({ producto, setProductos }) => {
   return (
     <>
       <tr>
-        <td>{producto.id}</td>
+        <td>{producto._id}</td>
         <td>{producto.nombreProducto}</td>
         <td>${producto.precio}</td>
         <td>{producto.imagen}</td>
         <td>{producto.categoria}</td>
         <td>
           <Link
-            to={`/administrar/editar/${producto.id}`}
+            to={`/administrar/editar/${producto._id}`}
             variant="warning"
             className="btn btn-warning me-1 mb-1"
           >

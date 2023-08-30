@@ -6,30 +6,40 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
-import { obtenerProductoAPI } from "../../helpers/queries";
+import { editarProductoAPI, obtenerProductoAPI } from "../../helpers/queries";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const EditarProducto = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm();
-  const { id } = useParams();
+  const { _id } = useParams();
+  const navegacion = useNavigate();
   useEffect(() => {
-    obtenerProductoAPI(id).then((respuesta) => {
+    obtenerProductoAPI(_id).then((respuesta) => {
       if (respuesta.status === 200) {
-        setValue('nombreProducto', respuesta.dato.nombreProducto);
-        setValue('precio', respuesta.dato.precio);
-        setValue('imagen', respuesta.dato.imagen);
-        setValue('categoria', respuesta.dato.categoria);
+        setValue("nombreProducto", respuesta.dato.nombreProducto);
+        setValue("precio", respuesta.dato.precio);
+        setValue("imagen", respuesta.dato.imagen);
+        setValue("categoria", respuesta.dato.categoria);
       }
     });
   }, []);
 
   const onSubmit = (datos) => {
-    console.log(datos)
     //pedir a la API (PUT) actualizar el producto con los datos
+    editarProductoAPI(_id, datos).then((respuesta) => {
+      if (respuesta.status === 200) {
+        Swal.fire("Producto editado", "El producto fue modificado", "success");
+        navegacion("/administrar");
+      } else {
+        Swal.fire("Error", "El producto no pudo ser modificado", "error");
+      }
+    });
   };
 
   return (
@@ -90,6 +100,15 @@ const EditarProducto = () => {
                 pattern: {
                   value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
                   message: "URL incorrecta",
+                  minLength: {
+                    value: 10,
+                    message: "La cantidad mínima de caracteres debe ser de 10",
+                  },
+                  maxLength: {
+                    value: 300,
+                    message:
+                      "La cantidad máxima de caracteres debe ser de 300",
+                  },
                 },
               })}
             />
@@ -115,7 +134,7 @@ const EditarProducto = () => {
           </Form.Group>
         </Row>
         <Button type="submit" variant="success" className="w-100">
-          Crear
+          Editar
         </Button>
       </Form>
     </Container>

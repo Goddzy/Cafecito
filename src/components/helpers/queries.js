@@ -61,6 +61,21 @@ export const obtenerProductoAPI = async (id) => {
   }
 };
 
+//editar productos (PUT)
+export const editarProductoAPI = async (id, producto) => {
+  try {
+    const respuesta = await fetch(URL + "/" + id,{
+      method:"PUT",
+      headers:{"Content-Type": "application/json"},
+      body: JSON.stringify(producto)
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
 export const crearUsuariosAPI = async (usuario) => {
   try {
     const respuesta = await fetch(USUARIOS, {

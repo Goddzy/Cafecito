@@ -12,7 +12,7 @@ const CardProducto = ({producto}) => {
             <span className="badge badge-rounded-pill bg-primary">${producto.precio}</span>
           </Card.Text>
           <Link
-            to={`/administrar/detalle/${producto.id}`}
+            to={`/administrar/detalle/${producto._id}`}
             variant="warning"
             className="btn btn-warning me-1 mb-1"
           >

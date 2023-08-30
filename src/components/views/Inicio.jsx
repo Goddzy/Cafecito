@@ -18,7 +18,7 @@ const Inicio = () => {
       <hr />
       <Row>
         {productosInicio.map((producto) => (
-          <CardProducto producto={producto} key={producto.id}></CardProducto>
+          <CardProducto producto={producto} key={producto._id}></CardProducto>
         ))}
       </Row>
     </Container>
