@@ -30,6 +30,17 @@
     }
   ],
   "usuarios": [
-
+    {
+      "nombreCrearUsuario": "qweqwe",
+      "emailCrearUsuario": "genaro@gmail.com",
+      "contraseniaCrearUsuario": "12345",
+      "id": 1
+    },
+    {
+      "nombreCrearUsuario": "Renato",
+      "emailCrearUsuario": "renatotrevisiol@gmail.com",
+      "contraseniaCrearUsuario": "123456",
+      "id": 2
+    }
   ]
 }

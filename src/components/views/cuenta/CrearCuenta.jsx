@@ -1,20 +1,18 @@
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import { useForm } from "react-hook-form";
 import { crearUsuariosAPI } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CrearCuenta = () => {
+const CrearCuenta = ({setUsuarioLogeado}) => {
   const navegacion = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset 
   } = useForm();
 
   const onSubmit = (data) => {
@@ -23,6 +21,8 @@ const CrearCuenta = () => {
        if(respuesta.status === 201){
          reset();
          Swal.fire('Su cuenta ha sido creada', 'Ya puede iniciar sesión', 'success')
+         localStorage.setItem('usuarioCreadoKey', JSON.stringify(data))
+         setUsuarioLogeado(data);
          navegacion('/')
        }else{Swal.fire('Ocurrió un error','Intente este proceso más tarde' , 'error')}
 

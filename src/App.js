@@ -11,12 +11,16 @@ import CrearProducto from "./components/views/producto/CrearProducto"
 import EditarProducto from "./components/views/producto/EditarProducto"
 import InicioSesion from "./components/views/cuenta/InicioSesion";
 import CrearCuenta from "./components/views/cuenta/CrearCuenta";
+import { useState } from "react";
 
 function App() {
+  const usuario = JSON.parse(localStorage.getItem('usuarioCreadoKey')) || {};
+  const [usuarioLogeado, setUsuarioLogeado] = useState(usuario);
+
   return (
     //Administrar las rutas
     <BrowserRouter>
-      <Menu></Menu>
+      <Menu usuarioLogeado={usuarioLogeado} setUsuarioLogeado={setUsuarioLogeado}></Menu>
         <Routes>
           <Route exact path="/" element={<Inicio />}></Route>
           <Route exact path="/administrar" element={<Administrador />}></Route>
@@ -24,8 +28,8 @@ function App() {
           <Route exact path="/administrar/detalle/:idDetalle" element={<DetalleProducto/>}></Route>
           <Route exact path="/administrar/crear" element={<CrearProducto/>}></Route>
           <Route exact path="/administrar/editar/:_id" element={<EditarProducto/>}></Route>
-          <Route exact path="/administrar/crearCuenta" element={<CrearCuenta/>}></Route>
-          <Route exact path="/administrar/iniciarSesion" element={<InicioSesion/>}></Route>
+          <Route exact path="/administrar/crearCuenta" element={<CrearCuenta setUsuarioLogeado={setUsuarioLogeado}/>}></Route>
+          <Route exact path="/administrar/iniciarSesion" element={<InicioSesion setUsuarioLogeado={setUsuarioLogeado}/>}></Route>
         </Routes>
       <Footer></Footer>
     </BrowserRouter>
