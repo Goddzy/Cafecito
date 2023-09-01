@@ -64,10 +64,10 @@ export const obtenerProductoAPI = async (id) => {
 //editar productos (PUT)
 export const editarProductoAPI = async (id, producto) => {
   try {
-    const respuesta = await fetch(URL + "/" + id,{
-      method:"PUT",
-      headers:{"Content-Type": "application/json"},
-      body: JSON.stringify(producto)
+    const respuesta = await fetch(URL + "/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(producto),
     });
     return respuesta;
   } catch (error) {
@@ -81,11 +81,32 @@ export const crearUsuariosAPI = async (usuario) => {
     const respuesta = await fetch(USUARIOS, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(usuario)
+      body: JSON.stringify(usuario),
     });
     return respuesta;
   } catch (error) {
     console.log(error);
     return false;
+  }
+};
+
+export const login = async (usuario) => {
+  try {
+    const respuesta = await fetch(USUARIOS);
+    const listaUsuarios = await respuesta.json();
+    const usuarioBuscado = listaUsuarios.find((itemUsuario)=>{return itemUsuario.emailCrearUsuario === usuario.iniciarSesionEmail
+    })
+    if (usuarioBuscado){
+      if(usuarioBuscado.contraseniaCrearUsuario===usuario.iniciarSesionContrasenia){
+        return usuarioBuscado
+      }else{console.log('contraseña incorrecta')}
+
+    }else{
+      console.log('email no existe')
+      return
+    }
+  } catch (error) {
+    console.log("error en el login");
+    return
   }
 };

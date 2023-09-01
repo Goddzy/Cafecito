@@ -1,7 +1,14 @@
-import { Container, Navbar, Nav } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Menu = ({ usuarioLogeado, setUsuarioLogeado }) => {
+  const navigate = useNavigate();
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuarioCreadoKey");
+    setUsuarioLogeado({});
+    navigate("/");
+  };
+
   return (
     <Navbar expand="lg" bg="danger" variant="light">
       <Container>
@@ -14,26 +21,24 @@ const Menu = ({ usuarioLogeado, setUsuarioLogeado }) => {
             <NavLink to="/" className={"nav-item nav-link"}>
               Inicio
             </NavLink>
+
             {usuarioLogeado.nombreCrearUsuario ? (
               <>
-                <NavLink to="/administrar" className={"nav-item nav-link"}>
+                <NavLink end to="/administrar" className={"nav-item nav-link"}>
                   Administrador
                 </NavLink>
-                <NavLink
+                <NavLink end
                   to="/administrar/crearCuenta"
                   className={"nav-item nav-link"}
                 >
                   Crear cuenta
                 </NavLink>
-                <NavLink
-                  to="/administrar/crearCuenta"
-                  className={"nav-item nav-link"}
-                >
+                <Button variant="danger" onClick={cerrarSesion}>
                   Logout
-                </NavLink>
+                </Button>
               </>
             ) : (
-              <NavLink
+              <NavLink end
                 to="/administrar/iniciarSesion"
                 className={"mb-auto nav-item nav-link"}
               >

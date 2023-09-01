@@ -23,7 +23,7 @@ const DetalleProducto = () => {
             <Card.Img
               variant="start"
               className="w-100"
-              height={300}
+              height={400}
                src= {datos.imagen}
               alt={datos.nombreProducto}
             />

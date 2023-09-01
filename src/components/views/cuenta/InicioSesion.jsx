@@ -4,8 +4,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useForm } from "react-hook-form";
+import { login } from "../../helpers/queries";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const InicioSesion = () => {
+const InicioSesion = ({setUsuarioLogeado}) => {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
@@ -13,7 +17,15 @@ const InicioSesion = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    //pedir valir a la api
+    login(data).then((respuesta)=>{
+      console.log(respuesta)
+      if (respuesta){
+        localStorage.setItem('usuarioCreadoKey', JSON.stringify(respuesta));
+        setUsuarioLogeado(respuesta);
+        Swal.fire('Listo!', 'Ha iniciado sesión correctamente', 'success')
+        navigate('/');
+      }else{Swal.fire('El usuario no existe', 'Error en el nombre de usuario o contraseña', 'error')}
+    })
   };
 
   return (
